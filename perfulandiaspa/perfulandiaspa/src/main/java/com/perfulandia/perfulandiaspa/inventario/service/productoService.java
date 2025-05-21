@@ -6,27 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.perfulandia.perfulandiaspa.inventario.model.inventarioModel;
+import com.perfulandia.perfulandiaspa.inventario.repository.inventarioRepository;
 
 @Service
 public class productoService {
 
     @Autowired
-    private productoService productoService;
+    private inventarioRepository inventarioRepository;
 
     public List<inventarioModel> findAll() {
-        return productoService.findAll();
+        return inventarioRepository.findAll();
     }
 
     public inventarioModel findById(Integer id) {
-        return productoService.findById(id);
+        return inventarioRepository.findById(id).orElse(null);
     }
 
     public inventarioModel save(inventarioModel inventario) {
-        return productoService.save(inventario);
+        return inventarioRepository.save(inventario);
     }
 
     public void deleteById(Integer id) {
-        productoService.deleteById(id);
+        inventarioRepository.deleteById(id);
     }
-
 }
+
