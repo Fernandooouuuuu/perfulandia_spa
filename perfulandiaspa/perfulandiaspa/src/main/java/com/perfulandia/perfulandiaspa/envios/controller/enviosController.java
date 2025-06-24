@@ -5,34 +5,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.perfulandia.perfulandiaspa.envios.model.enviosModel;
-import com.perfulandia.perfulandiaspa.envios.service.enviosService;
+import com.perfulandia.perfulandiaspa.envios.model.EnviosModel;
+import com.perfulandia.perfulandiaspa.envios.service.EnviosService;
 
 @RestController
 @RequestMapping("/api/envios")
-public class enviosController {
+public class EnviosController {
     @Autowired
-    private enviosService enviosService;
+    private EnviosService enviosService;
 
     @PostMapping
-    public enviosModel crearVenta(@RequestBody enviosModel venta) {
-        return enviosService.crearVenta(venta);
+    public EnviosModel crearVenta(@RequestBody EnviosModel venta) {
+        return EnviosService.crearVenta(venta);
     }
 
     @GetMapping
-    public List<enviosModel> listarVentas() {
-        return enviosService.listarVentas();
+    public List<EnviosModel> listarVentas() {
+        return EnviosService.listarVentas();
     }
 
     @GetMapping("/{id}")
-    public enviosModel obtenerVentaPorId(@PathVariable Long id) {
-        return enviosService.obtenerVentaPorId(id);
+    public EnviosModel obtenerVentaPorId(@PathVariable Long id) {
+        return EnviosService.obtenerVentaPorId(id);
     }
 
     @DeleteMapping("/{id}")
     public String eliminarVenta(@PathVariable Long id) {
         try {
-            enviosService.eliminarVenta(id);
+            EnviosService.eliminarVenta(id);
             return "Venta eliminada con éxito";
         } catch (Exception e) {
             return "Error al eliminar la venta: " + e.getMessage();
