@@ -10,14 +10,15 @@ import com.perfulandia.perfulandiaspa.envios.repository.EnviosRepository;
 
 @Service
 public class EnviosService {
+
     @Autowired
     private EnviosRepository enviosRepository;
 
-    public EnviosModel crearEnvio(EnviosModel venta) {
-        return enviosRepository.save(venta);
+    public EnviosModel crearEnvio(EnviosModel envio) {
+        return enviosRepository.save(envio);
     }
 
-    public List<EnviosModel> listarEnvio() {
+    public List<EnviosModel> listarEnvios() {
         return enviosRepository.findAll();
     }
 
